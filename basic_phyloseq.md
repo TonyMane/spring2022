@@ -10,3 +10,8 @@ load("caddis03282022.rds")
 ```
 The rds file should be very simple, containing a sinlge object. 
 Can just type 'objects()' do see see whats been loaded.
+
+```
+objects()
+[1] "ps"
+```
