@@ -19,6 +19,9 @@ Some basic data about the object can be printed by typing its name.
 
 ```
 ps
+```
+And below is what should be printed to the screen.
+```
 phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 69382 taxa and 219 samples ]
 sample_data() Sample Data:       [ 219 samples by 4 sample variables ]
