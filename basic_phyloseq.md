@@ -15,3 +15,13 @@ Can just type 'objects()' do see see whats been loaded.
 objects()
 [1] "ps"
 ```
+Some basic data about the object can be printed by typing its name.
+
+```
+ps
+phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 69382 taxa and 219 samples ]
+sample_data() Sample Data:       [ 219 samples by 4 sample variables ]
+tax_table()   Taxonomy Table:    [ 69382 taxa by 6 taxonomic ranks ]
+refseq()      DNAStringSet:      [ 69382 reference sequences ]
+```
