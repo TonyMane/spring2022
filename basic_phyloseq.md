@@ -129,4 +129,16 @@ We can then plot the result with 'scatterplot3d'.
 library(scatterplot3d)
 scatterplot3d(ps_rare_unifrac.nmds$points[,1:3], color=sample_data(ps_rare)$Color, pch=16)
 ```
-This should produce a large NMDS plot. In it, the black circles should appear separate in space from all other colors, as these are the larval caddisfly populations. 
+This should produce a large NMDS plot. In it, the black circles should appear separate in space from all other colors, as these are the larval caddisfly populations. This ordination is a bit overwhelming. Might be more informative to look at time1 and time 2 independently using the same methods.
+
+```
+ps_rare.time1 = subset_samples(ps_rare, sample_data(ps_rare)$Time == "one")
+ps_rare.time1.unifrac = phyloseq::distance(ps_rare.time1, "unifrac")
+ps_rare.time1.unifrac.nmds = monoMDS(ps_rare.time1.unifrac, k=3)
+scatterplot3d(ps_rare.time1.unifrac.nmds$points[,1:3], color=sample_data(ps_rare.time1)$Color, pch=16)
+```
+This ordination represents just time 1 sampling. Visually, each of the riverine microbiome types appears to ordindate in its own three dimensional space away from other types. Note that the axis limits are all different. I find it useful to modify these so that they are all the same. 
+
+```
+scatterplot3d(ps_rare.time1.unifrac.nmds$points[,1:3], color=sample_data(ps_rare.time1)$Color, pch=16, ylim=c(-4,4), xlim=c(-4,4), zlim=c(-4,4))
+```
