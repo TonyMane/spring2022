@@ -74,4 +74,29 @@ ASV23 "Bacteria" "Bacteroidetes"  "Bacteroidia"         "Chitinophagales"       
 ASV26 "Bacteria" "Proteobacteria" "Gammaproteobacteria" "Betaproteobacteriales" "Burkholderiaceae" "Rhodoferax"             
 ASV27 "Bacteria" "Bacteroidetes"  "Bacteroidia"         "Chitinophagales"       "Saprospiraceae"   NA
 ```
+Then perform another removal of mitochondria:
 
+```
+ps_clean = subset_taxa(ps_clean, Class != "Mitochondria")
+```
+The chloroplast/mitochondria free phyloseq object should read as such:
+
+```
+ps_clean
+phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 53124 taxa and 219 samples ]
+sample_data() Sample Data:       [ 219 samples by 4 sample variables ]
+tax_table()   Taxonomy Table:    [ 53124 taxa by 6 taxonomic ranks ]W
+refseq()      DNAStringSet:      [ 53124 reference sequences ]
+```
+We now want to adjust each of the sample sizes such they are equal, a process often referred to as rarefaction. 
+Note, whether to rarefy or not rarefy is the subject of much debate in microbiome research. See:
+https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003531 
+And https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btac127/6536959?login=true.
+
+We'll do it here, mainly because we aren't as concerned with 'rare' taxa, but we'll also come back to this later. 
+To rarefy, phyloseq has an easy command (rarefy_even_depth):
+
+```
+ps_rare = ps_rare = rarefy_even_depth(ps_clean, 1000)
+```
