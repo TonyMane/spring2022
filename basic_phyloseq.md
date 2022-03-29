@@ -100,3 +100,14 @@ To rarefy, phyloseq has an easy command (rarefy_even_depth):
 ```
 ps_rare = ps_rare = rarefy_even_depth(ps_clean, 1000)
 ```
+We would like to do some comparisons between samples, looking at how similar (or distant) each of the samples is to one another.
+There a LOT of ways to do this, commonly termed Beta diversity. 
+A very popular method is Unifrac. See :
+https://www.nature.com/articles/ismej2010133
+
+To perform unifrac on our matrix we need to first generate a phylogenetic tree and incorporate it into the phyloseq object.
+
+```
+tree = rtree(ntaxa(ps.rare), rooted=TRUE, tip.label=taxa_names(ps.rare))
+ps_rare = merge_phyloseq(ps_rare, tree)
+```
