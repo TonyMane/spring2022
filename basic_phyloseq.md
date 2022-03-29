@@ -129,3 +129,4 @@ We can then plot the result with 'scatterplot3d'.
 library(scatterplot3d)
 scatterplot3d(ps_rare_unifrac.nmds$points[,1:3], color=sample_data(ps_rare)$Color, pch=16)
 ```
+This should produce a large NMDS plot. In it, the black circles should appear separate in space from all other colors, as these are the larval caddisfly populations. 
