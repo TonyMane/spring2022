@@ -111,3 +111,21 @@ To perform unifrac on our matrix we need to first generate a phylogenetic tree a
 tree = rtree(ntaxa(ps.rare), rooted=TRUE, tip.label=taxa_names(ps.rare))
 ps_rare = merge_phyloseq(ps_rare, tree)
 ```
+Now we can run unifrac.
+
+```
+ps_rare_unifrac = phyloseq :: distance(ps_rare, "unifrac")
+```
+This produces a large rectangular distance matrix. We do a lot with this, but a common method of analysis is ordination, a quick way to visually
+explore the data. I use the vegan package for this, there might be ones available directly in phyloseq though. For three dimensional ordination use k=3.
+
+```
+library(vegan)
+ps_rare_unifrac_nmds = monoMDS(ps_rare_unifrac, k=3)
+```
+
+We can then plot the result with 'scatterplot3d'.
+```
+library(scatterplot3d)
+scatterplot3d(ps_rare_unifrac.nmds$points[,1:3], color=sample_data(ps_rare)$Color, pch=16)
+```
