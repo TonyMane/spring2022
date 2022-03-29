@@ -57,3 +57,21 @@ ASV5 "Bacteria" "Cyanobacteria" "Oxyphotobacteria" "Chloroplast" NA     NA
 ASV6 "Bacteria" "Cyanobacteria" "Oxyphotobacteria" "Chloroplast" NA     NA
 ```
 As you can see, the top 6 ASVs are all chloroplast sequences. These sequences are not associated with single celled bacteria and archaea (i.e. 'microbiome'), but multicellular aquatic chloroplasts. Its considered good practice to remove these and sequences associated with mitochondria. 
+Phyloseq has some nice utilities for easy access to sequences, their IDs, and subseqent removal. We can remove all "Chloroplasts" and "Mitochondria" using the below commands:
+```
+ps_clean = subset_taxa(ps, Order != "Chloroplast")
+```
+And then have a look at the top of the 'cleaned' data.
+
+```
+head(tax_table(ps_clean))
+Taxonomy Table:     [6 taxa by 6 taxonomic ranks]:
+      Kingdom    Phylum           Class                 Order                   Family             Genus                    
+ASV10 "Bacteria" "Cyanobacteria"  "Oxyphotobacteria"    "Nostocales"            "Phormidiaceae"    "Tychonema_CCAP_1459-11B"
+ASV11 "Bacteria" "Bacteroidetes"  "Bacteroidia"         "Chitinophagales"       "Saprospiraceae"   NA                       
+ASV17 "Bacteria" "Cyanobacteria"  "Oxyphotobacteria"    "Nostocales"            "Phormidiaceae"    "Tychonema_CCAP_1459-11B"
+ASV23 "Bacteria" "Bacteroidetes"  "Bacteroidia"         "Chitinophagales"       "Saprospiraceae"   NA                       
+ASV26 "Bacteria" "Proteobacteria" "Gammaproteobacteria" "Betaproteobacteriales" "Burkholderiaceae" "Rhodoferax"             
+ASV27 "Bacteria" "Bacteroidetes"  "Bacteroidia"         "Chitinophagales"       "Saprospiraceae"   NA
+```
+
