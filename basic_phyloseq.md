@@ -53,3 +53,4 @@ ASV4 "Bacteria" "Cyanobacteria" "Oxyphotobacteria" "Chloroplast" NA     NA
 ASV5 "Bacteria" "Cyanobacteria" "Oxyphotobacteria" "Chloroplast" NA     NA   
 ASV6 "Bacteria" "Cyanobacteria" "Oxyphotobacteria" "Chloroplast" NA     NA
 ```
+As you can see, the top 6 ASVs are all chloroplast sequences. These sequences are not associated with single celled bacteria and archaea (i.e. 'microbiome'), but multicellular aquatic chloroplasts. Its considered good practice to remove these and sequences associated with mitochondria. 
