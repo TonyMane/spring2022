@@ -25,9 +25,15 @@ sample_data() Sample Data:       [ 219 samples by 4 sample variables ]
 tax_table()   Taxonomy Table:    [ 69382 taxa by 6 taxonomic ranks ]
 refseq()      DNAStringSet:      [ 69382 reference sequences ]
 ```
-The OTU Table is actually an approximate sequence variant table. For background about how these were generated see: 
+The'otu_table()' is actually an approximate sequence variant table. For background about how these were generated see: 
 https://www.nature.com/articles/nmeth.3869.
 For some info on why aproximate sequence variants (ASVs) are used exclusively for 16S rRNA gene analyses, see:
 https://www.nature.com/articles/ismej2017119. 
 
-Each 'taxa' is actually an ASV. So there are 69382 ASVs distributed throughout 219 samples. The 'tax_table' has information 
+The 'otu_table()' is orientated with ASVs in columns and samples in rows. 
+We can see the sequencing depth per sample by using 'colSums' on the transposed 'otu_table'
+```
+colSums(t(otu_table(ps)))
+```
+
+Each 'taxa' is actually an ASV. So there are 69382 ASVs distributed throughout 219 samples. The 'tax_table()' has information 
